@@ -5,7 +5,7 @@
 int main(int argc,char *argv[]){
 	int rets=0;
 	void *handler;
-	int (*starter)(int,char*);
+	int (*starter)(int,char*[]);
 	if(argc<2)exit(0);
 	handler=dlopen("./torun.run",RTLD_LAZY);
 	if (!handler){
@@ -17,7 +17,7 @@ int main(int argc,char *argv[]){
 		puts("error not a runer file");
 		exit(1);
 	}
-	rets=starter(0,"\ec\e[47;30m\nhello world...");
+	rets=starter(argc,argv);
 	dlclose(handler);
 	return rets;
 }
