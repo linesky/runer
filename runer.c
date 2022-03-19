@@ -7,7 +7,7 @@ int main(int argc,char *argv[]){
 	void *handler;
 	int (*starter)(int,char*[]);
 	if(argc<2)exit(0);
-	handler=dlopen("./torun.run",RTLD_LAZY);
+	handler=dlopen(argv[1],RTLD_LAZY);
 	if (!handler){
 		puts("error on load to run file");
 		exit(1);
